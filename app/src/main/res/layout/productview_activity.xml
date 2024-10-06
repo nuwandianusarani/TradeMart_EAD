@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Top App Bar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp">
+
+        <!-- Sort and Filter Icons -->
+        <ImageView
+            android:id="@+id/icon_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_sort_24"
+            android:layout_gravity="end" />
+
+        <ImageView
+            android:id="@+id/icon_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_filter_alt_24"
+            android:layout_gravity="end"
+            android:layout_marginStart="16dp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- Category Tabs -->
+    <HorizontalScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <Button
+                android:id="@+id/tab_sneakers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sneakers"
+                android:textColor="@android:color/black"
+                android:backgroundTint="@android:color/white"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/tab_sport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sport"
+                android:textColor="@android:color/black"
+                android:backgroundTint="@android:color/white"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/tab_boot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Boot"
+                android:textColor="@android:color/black"
+                android:backgroundTint="@android:color/white"
+                android:layout_marginEnd="8dp"/>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- RecyclerView for Product Grid -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/product_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        android:layout_marginTop="8dp"
+        tools:listitem="@layout/product_item_card"/>
+
+    <!-- Floating Action Button (for Cart/Navigation) -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
+        app:backgroundTint="@color/Green"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7f8c8d"
+    tools:context=".MainActivity">
+
+    <!-- CardView for Logo -->
+
+    <!-- User Card Example - CardView for User 1 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/logoCardView"
+        android:layout_width="417dp"
+        android:layout_height="55dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#000000"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Logo Image -->
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="54dp"
+            android:layout_height="56dp"
+            android:layout_margin="4dp"
+            android:contentDescription="Logo"
+            android:src="@drawable/logo" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        android:backgroundTint="#ffffff"
+        app:layout_constraintTop_toBottomOf="@+id/logoCardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Username Display -->
+            <TextView
+                android:id="@+id/username1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:text="User 1"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Button Row (Approve/Reject) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- Approve Button -->
+                <Button
+                    android:id="@+id/approveButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Approve"
+                    android:backgroundTint="@android:color/holo_green_light"
+                    android:textColor="@android:color/white" />
+
+                <!-- Reject Button -->
+                <Button
+                    android:id="@+id/rejectButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Reject"
+                    android:backgroundTint="@android:color/holo_red_light"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- CardView for User 2 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        android:backgroundTint="#ffffff"
+        app:layout_constraintTop_toBottomOf="@+id/cardView1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Username Display -->
+            <TextView
+                android:id="@+id/username2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:text="User 2"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Button Row (Approve/Reject) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- Approve Button -->
+                <Button
+                    android:id="@+id/approveButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Approve"
+                    android:backgroundTint="@android:color/holo_green_light"
+                    android:textColor="@android:color/white" />
+
+                <!-- Reject Button -->
+                <Button
+                    android:id="@+id/rejectButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Reject"
+                    android:backgroundTint="@android:color/holo_red_light"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- CardView for User 3 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        android:backgroundTint="#ffffff"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Username Display -->
+            <TextView
+                android:id="@+id/username3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:text="User 3"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Button Row (Approve/Reject) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- Approve Button -->
+                <Button
+                    android:id="@+id/approveButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Approve"
+                    android:backgroundTint="@android:color/holo_green_light"
+                    android:textColor="@android:color/white" />
+
+                <!-- Reject Button -->
+                <Button
+                    android:id="@+id/rejectButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Reject"
+                    android:backgroundTint="@android:color/holo_red_light"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- CardView for User 4 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        android:backgroundTint="#ffffff"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Username Display -->
+            <TextView
+                android:id="@+id/username4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:text="User 4"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Button Row (Approve/Reject) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- Approve Button -->
+                <Button
+                    android:id="@+id/approveButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Approve"
+                    android:backgroundTint="@android:color/holo_green_light"
+                    android:textColor="@android:color/white" />
+
+                <!-- Reject Button -->
+                <Button
+                    android:id="@+id/rejectButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Reject"
+                    android:backgroundTint="@android:color/holo_red_light"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- CardView for User 5 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        android:backgroundTint="#ffffff"
+        app:layout_constraintTop_toBottomOf="@+id/cardView4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Username Display -->
+            <TextView
+                android:id="@+id/username5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:text="User 5"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Button Row (Approve/Reject) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- Approve Button -->
+                <Button
+                    android:id="@+id/approveButton5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Approve"
+                    android:backgroundTint="@android:color/holo_green_light"
+                    android:textColor="@android:color/white" />
+
+                <!-- Reject Button -->
+                <Button
+                    android:id="@+id/rejectButton5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Reject"
+                    android:backgroundTint="@android:color/holo_red_light"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

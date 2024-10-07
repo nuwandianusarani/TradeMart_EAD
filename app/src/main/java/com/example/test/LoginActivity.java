@@ -104,31 +104,87 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     in.close();
 
-                    result = response.toString();
+                    // Try to parse the response as JSON
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response.toString());
+                        String token = jsonResponse.getString("token");
+                        String role = jsonResponse.getString("role");
+
+                        // Optionally, log the token and role
+                        Log.i("LoginResponse", "Token: " + token);
+                        Log.i("LoginResponse", "Role: " + role);
+
+                        // Return the parsed JSON result
+                        result = jsonResponse.toString(); // Or handle the parsed data as needed
+                    } catch (Exception jsonException) {
+                        // If there's an error parsing JSON, log and return the error
+                        Log.e("LoginResponse", "Failed to parse JSON: " + jsonException.getMessage());
+                        result = "Error: Failed to parse response JSON.";
+                    }
+
                 } else {
-                    result = "Error: " + responseCode;
+                    // If the response code is not OK, try to read the error stream
+                    BufferedReader errorReader = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+                    StringBuilder errorResponse = new StringBuilder();
+                    String errorLine;
+
+                    while ((errorLine = errorReader.readLine()) != null) {
+                        errorResponse.append(errorLine);
+                    }
+                    errorReader.close();
+
+                    // Log the error and return it
+                    result = "Error: " + responseCode + " - " + errorResponse.toString();
+                    Log.e("LoginError", result);
                 }
-                Log.i("message", "result: " + result);
+                Log.i("LoginResponse", "Result: " + result);
 
             } catch (Exception e) {
+                // Log any exception that occurs during the connection or response processing
                 e.printStackTrace();
-                result = e.getMessage();
+                result = "Error: " + e.getMessage();
+                Log.e("LoginException", result);
             }
 
             return result;
+
         }
 
         @Override
         protected void onPostExecute(String result) {
             // Handle the API response here
-            Toast.makeText(LoginActivity.this, "Response: " + result, Toast.LENGTH_LONG).show();
+            try {
+                // Parse the result JSON
+                JSONObject jsonResponse = new JSONObject(result);
 
-            // You can navigate to a different activity based on successful login if needed
-            // For example:
-            // if (result.contains("success")) {
-            //     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-            //     startActivity(intent);
-            // }
+                // Extract token and role
+                String token = jsonResponse.getString("token");
+                String role = jsonResponse.getString("role");
+
+                // Show a success message
+                Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_LONG).show();
+
+                // Check the role and navigate to the appropriate activity
+                if ("User".equals(role)) {
+                    // Navigate to the HomeActivity for normal users
+                    Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
+                    intent.putExtra("token", token); // Pass the token to HomeActivity
+                    startActivity(intent);
+                } else if ("Admin".equals(role)) {
+                    // Navigate to the AdminHomeActivity for admins
+                    Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
+                    intent.putExtra("token", token); // Pass the token to AdminHomeActivity
+                    startActivity(intent);
+                } else {
+                    // Handle other roles if necessary
+                    Toast.makeText(LoginActivity.this, "Unknown role: " + role, Toast.LENGTH_SHORT).show();
+                }
+            } catch (Exception e) {
+                // If an error occurs during parsing or navigation, log it and show a failure message
+                e.printStackTrace();
+                Toast.makeText(LoginActivity.this, "Login failed: " + result, Toast.LENGTH_LONG).show();
+            }
         }
+
     }
 }

@@ -77,6 +77,16 @@
                 android:backgroundTint="@android:color/white"
                 android:layout_marginEnd="8dp"/>
 
+            <Button
+                android:id="@+id/tab_boot2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/white"
+                android:text="Boot"
+                android:textColor="@android:color/black" />
+
         </LinearLayout>
     </HorizontalScrollView>
 

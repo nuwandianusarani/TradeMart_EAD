@@ -1,0 +1,18 @@
+<!-- res/drawable/bg_non_editable.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background color -->
+    <solid android:color="#E0E0E0" /> <!-- Light gray background -->
+
+    <!-- Border color and width -->
+    <stroke android:width="2dp" android:color="#BDBDBD"/> <!-- Gray border -->
+
+    <!-- Padding inside the TextView -->
+    <padding
+        android:left="8dp"
+        android:top="8dp"
+        android:right="8dp"
+        android:bottom="8dp" />
+
+    <!-- Rounded corners -->
+    <corners android:radius="8dp" />
+</shape>

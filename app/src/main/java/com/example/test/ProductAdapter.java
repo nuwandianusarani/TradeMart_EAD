@@ -17,19 +17,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     private ArrayList<Product> products;
     private Context context;
+    private onProductClickListener productClickListener;
 
 
 
-    public ProductAdapter(ArrayList<Product> products, Context context) {
+    public ProductAdapter(ArrayList<Product> products, Context context, onProductClickListener productClickListener) {
         this.products = products;
         this.context = context;
+        this.productClickListener = productClickListener;
     }
 
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product, parent, false);
-        return new ProductViewHolder(view);
+        return new ProductViewHolder(view,productClickListener);
     }
 
     @Override
@@ -72,18 +74,29 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return products.size();
     }
 
-    public static class ProductViewHolder extends RecyclerView.ViewHolder {
+    public static class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView productName, productPrice, productAvailableQuantity, productDescription;
+        onProductClickListener productClickListener;
         ImageView productImg;
 
-        public ProductViewHolder(@NonNull View itemView) {
+        public ProductViewHolder(@NonNull View itemView, onProductClickListener productClickListener) {
             super(itemView);
             productName = itemView.findViewById(R.id.productName);
             productPrice = itemView.findViewById(R.id.productPrice);
+            this.productClickListener = productClickListener;
+            itemView.setOnClickListener(this);
 //            productAvailableQuantity = itemView.findViewById(R.id.productAvailableQuantity);
 //            productDescription = itemView.findViewById(R.id.productDescription);
             productImg = itemView.findViewById(R.id.productImg);
         }
+
+        @Override
+        public void onClick(View v) {
+            productClickListener.onProductClick(getAdapterPosition());
+        }
+    }
+    public interface onProductClickListener {
+        void onProductClick(int position);
     }
 }

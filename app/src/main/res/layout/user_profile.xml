@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="#f5f5f5">
+
+    <!-- User Image (Hardcoded) -->
+
+    <!-- Username (Non-editable) -->
+
+    <ImageView
+        android:id="@+id/img_user"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="User Image"
+        android:scaleType="centerCrop"
+        android:src="@drawable/user_profile" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User123"
+        android:textSize="18sp"
+        android:background="@drawable/bg_non_editable"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp"
+        android:textColor="@android:color/black"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"/>
+
+    <!-- Old Password -->
+    <EditText
+        android:id="@+id/et_old_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Old Password"
+        android:inputType="textPassword"
+        android:layout_marginBottom="16dp"
+        android:padding="10dp"
+        android:background="@android:drawable/edit_text"
+        android:textSize="16sp"/>
+
+    <!-- New Password -->
+    <EditText
+        android:id="@+id/et_new_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter New Password"
+        android:inputType="textPassword"
+        android:layout_marginBottom="16dp"
+        android:padding="10dp"
+        android:background="@android:drawable/edit_text"
+        android:textSize="16sp"/>
+
+    <!-- Confirm New Password -->
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Changes"
+        android:textSize="18sp"
+        android:backgroundTint="@color/Ash"
+        android:textColor="@android:color/white"/>
+
+</LinearLayout>

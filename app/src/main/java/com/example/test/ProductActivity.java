@@ -1,6 +1,7 @@
 package com.example.test;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +17,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class ProductActivity extends AppCompatActivity {
+public class ProductActivity extends AppCompatActivity implements ProductAdapter.onProductClickListener {
 
     private RecyclerView recyclerView;
     private ProductAdapter productAdapter;
@@ -48,6 +49,26 @@ public class ProductActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // Adjust to your layout preference
     }
 
+    @Override
+    public void onProductClick(int position) {
+        String productName = products.get(position).getProductName();
+        String categoryName = products.get(position).getCategory();
+        String price = products.get(position).getPrice();
+        String availableQuantity = products.get(position).getAvailableQuantity();
+        String description = products.get(position).getDescription();
+        String image = products.get(position).getImageUrl();
+//        Intent intent = new Intent(this, ProductActivity.class);
+        Intent intent = new Intent(ProductActivity.this, ProductDetailActivity.class);
+        // Pass data using putExtra
+        intent.putExtra("productName", productName);
+        intent.putExtra("categoryName", categoryName);
+        intent.putExtra("price", price);
+        intent.putExtra("availableQuantity", availableQuantity);
+        intent.putExtra("description", description);
+        intent.putExtra("image", image);
+        startActivity(intent);
+    }
+
     public void processProductData(JSONArray jsonArray) {
         try {
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -64,7 +85,7 @@ public class ProductActivity extends AppCompatActivity {
                 products.add(product);
             }
 
-            ProductAdapter productAdapter = new ProductAdapter (products,context);
+            ProductAdapter productAdapter = new ProductAdapter (products,context,ProductActivity.this);
             recyclerView.setAdapter(productAdapter);
 
         } catch (Exception e) {

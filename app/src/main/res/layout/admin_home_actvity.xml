@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#7f8c8d"
-    tools:context=".MainActivity">
+    tools:context=".AdminHomeActivity">
 
     <!-- CardView for Logo -->
 
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="8dp"
-                android:text="User 1"
+                android:text="Huwandi Hewammaduma"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -119,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="8dp"
-                android:text="User 2"
+                android:text="Rishen Lithan"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -178,7 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="8dp"
-                android:text="User 3"
+                android:text="Nayali Jayawardana"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -237,7 +237,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="8dp"
-                android:text="User 4"
+                android:text="Kushan Nalinka"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -296,7 +296,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="8dp"
-                android:text="User 5"
+                android:text="Kamal wickrmasinghe"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 

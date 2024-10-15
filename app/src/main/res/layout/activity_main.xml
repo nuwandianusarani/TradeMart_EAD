@@ -8,7 +8,6 @@
     android:background="@drawable/gray_darkblue_gradient"
     tools:context=".MainActivity">
 
-    <!-- Application Logo (Text as placeholder) -->
     <TextView
         android:id="@+id/app_logo"
         android:layout_width="wrap_content"
@@ -22,7 +21,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Application Name -->
     <TextView
         android:id="@+id/app_name"
         android:layout_width="wrap_content"
@@ -35,7 +33,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Description or Subtitle -->
     <TextView
         android:id="@+id/app_description"
         android:layout_width="wrap_content"
@@ -48,7 +45,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Get Started Button -->
     <Button
         android:id="@+id/get_started_button"
         android:layout_width="170dp"

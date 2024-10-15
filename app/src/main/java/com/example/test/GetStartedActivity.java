@@ -14,12 +14,11 @@ public class GetStartedActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);  // Load the layout you created
+        setContentView(R.layout.activity_main);
 
         // Initialize the Get Started button
         getStartedButton = findViewById(R.id.get_started_button);
 
-        // Set onClick listener to navigate to LoginActivity when the button is clicked
         getStartedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,22 +1,18 @@
 package com.example.test;
-
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.test.model.CartManager;
-import com.example.test.model.Product;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -24,68 +20,77 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 
-public class CartActivity extends AppCompatActivity {
-
-    private RecyclerView recyclerView;
-    private Context context;
-    private ArrayList<Product> products = new ArrayList<>();
-    private Button checkoutButton;
-
+public class UserProfileActivity extends AppCompatActivity {
+    private TextView tvUsername;
+    private EditText etOldPassword, etNewPassword;
+    private Button btnSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cart_list_activity);  // Ensure the layout file name matches
-        init();
+        setContentView(R.layout.user_profile);
 
-        ArrayList<Product> cartItems = CartManager.getInstance().getCartItems();
+        // Initialize views
+        tvUsername = findViewById(R.id.tv_username);
+        etOldPassword = findViewById(R.id.et_old_password);
+        etNewPassword = findViewById(R.id.et_new_password);
+        btnSave = findViewById(R.id.btn_save);
+        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+        String email = sharedPref.getString("email", null);
+        // Setting a hardcoded username for demonstration purposes
+        tvUsername.setText(email);
 
-//        if (getIntent().hasExtra("product")) {
-//            Product product = (Product) getIntent().getSerializableExtra("product");
-//            products.add(product);  // Add the received product to the cart list
-//        }
-
-        checkoutButton = findViewById(R.id.checkoutButton);
-
-        // Initialize RecyclerView adapter to display cart products
-        CartActivityAdapter cartAdapter = new CartActivityAdapter(context, cartItems);
-        recyclerView.setAdapter(cartAdapter);
-
-        // Handle the Checkout Button Click
-        checkoutButton.setOnClickListener(new View.OnClickListener() {
+        // Handle Save button click
+        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                proceedToCheckout();
-
+            public void onClick(View v) {
+                saveChanges();
             }
         });
     }
 
-    private void init() {
-        recyclerView = findViewById(R.id.recyclerView); // Ensure this ID matches your layout
-        context = CartActivity.this;
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL); // Set the orientation to vertical
-        recyclerView.setLayoutManager(layoutManager);
+    // Method to handle password change
+    private void saveChanges() {
+        String oldPassword = etOldPassword.getText().toString();
+        String newPassword = etNewPassword.getText().toString();
+
+        // Simple validation
+        if (TextUtils.isEmpty(oldPassword)) {
+            Toast.makeText(UserProfileActivity.this, "Please enter your old password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(newPassword)) {
+            Toast.makeText(UserProfileActivity.this, "Please enter a new password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Check if old and new passwords are different
+        if (oldPassword.equals(newPassword)) {
+            Toast.makeText(UserProfileActivity.this, "New password must be different from the old password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        new UserProfileActivity.ProfileTask().execute(oldPassword, newPassword);
+
+        // Simulate saving changes (this is where you'd typically send the data to your backend)
+        Toast.makeText(UserProfileActivity.this, "Password changed successfully!", Toast.LENGTH_SHORT).show();
+
+        // Clear the input fields
+        etOldPassword.setText("");
+        etNewPassword.setText("");
     }
-
-    private void proceedToCheckout() {
-        new CartActivity.CheckoutTask().execute();
-        Toast.makeText(context, "Order Successful", Toast.LENGTH_SHORT).show();
-
-
-    }
-
-    private class CheckoutTask extends AsyncTask<String, Void, String> {
+    private class ProfileTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
+            String oldPassword = params[0];
+            String newPassword = params[1];
             String result = "";
 
             try {
                 // API URL for registration
-                URL url = new URL("http://10.0.2.2:3000/api/Order/create");
+                URL url = new URL("http://10.0.2.2:3000/api/Auth/change-password");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json");
@@ -97,29 +102,8 @@ public class CartActivity extends AppCompatActivity {
 
                 // Create JSON payload for registration
                 JSONObject registerData = new JSONObject();
-                registerData.put( "note", "Please deliver in the door step.");
-                registerData.put("deliveryAddress", "123 Main St, Cityville");
-
-                ArrayList<Product> cartItems = CartManager.getInstance().getCartItems();
-
-                // Create JSONArray for order items
-                JSONArray orderItems = new JSONArray();
-
-                // Iterate over cart items and add to order items
-                for (Product product : cartItems) {
-                    JSONObject item = new JSONObject();
-                    item.put("productId", "66fd830ce40ce14f30fe8dba"); // Assuming you have a productId field
-                    item.put("productName", product.getProductName());
-                    item.put("quantity", Integer.parseInt(product.getOrderQuantity())); // Convert quantity to int
-                    item.put("unitPrice", Double.parseDouble(product.getPrice())); // Convert price to double
-                    item.put("vendorId", "66f992a7f92d1a5ac2583834"); // Assuming you have a vendorId field
-                    item.put("vendorEmail", "vendorc@example.com"); // Assuming you have a vendorEmail field
-
-                    orderItems.put(item);
-                }
-
-                // Add order items to the order data
-                registerData.put("orderItems", orderItems);
+                registerData.put("oldPassword", oldPassword);
+                registerData.put("newPassword", newPassword);
 
                 // Write the JSON data to the output stream
                 OutputStream os = conn.getOutputStream();
@@ -173,4 +157,3 @@ public class CartActivity extends AppCompatActivity {
         }
     }
 }
-

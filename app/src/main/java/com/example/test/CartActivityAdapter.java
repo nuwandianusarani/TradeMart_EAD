@@ -34,7 +34,7 @@ public class CartActivityAdapter extends RecyclerView.Adapter<CartActivityAdapte
         Product product = productList.get(position);
         holder.prodName.setText(product.getProductName());
         holder.prodPrice.setText(product.getPrice());
-        holder.prodQuantity.setText(product.getAvailableQuantity());
+        holder.prodQuantity.setText(product.getOrderQuantity());
 
         // If using Glide for image loading (optional)
         Picasso.get()

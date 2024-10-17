@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#f5f5f5">
+
+    <!-- Vendor Name Display -->
+    <TextView
+        android:id="@+id/vendor_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vendor Name"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="16dp" />
+
+    <!-- User Comment Input -->
+    <EditText
+        android:id="@+id/comment_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Add your comment"
+        android:layout_marginBottom="16dp"
+        android:padding="10dp"
+        android:background="@android:drawable/edit_text"
+        android:minHeight="100dp"
+        android:textColor="@android:color/black"
+        android:gravity="top" />
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/submit_comment_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit Comment"
+        android:textSize="18sp"
+        android:backgroundTint="@color/Ash"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>

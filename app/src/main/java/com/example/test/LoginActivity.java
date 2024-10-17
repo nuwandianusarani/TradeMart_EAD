@@ -113,6 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                         // Save the token and role to SharedPreferences
                         editor.putString("token", token);
                         editor.putString("role", role);
+                        editor.putString("email", email);
 
                         // Commit the changes
                         editor.apply();  // Use apply() for async saving or commit() for synchronous saving
@@ -121,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         if ("User".equals(role)) {
 
-                            Intent intent = new Intent(LoginActivity.this, CategoryActivity.class);
+                            Intent intent = new Intent(LoginActivity.this,UserHomeActivity.class);
                             startActivity(intent);
                         } else if ("Customer Service Representative".equals(role)) {
 

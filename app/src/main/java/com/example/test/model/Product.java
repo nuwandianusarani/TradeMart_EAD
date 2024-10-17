@@ -10,6 +10,7 @@ public class Product implements Serializable {
     private String category;
     private String description;
     private String imageUrl;
+    private String orderQuantity;
 
     // No-argument constructor (for flexibility, especially with serialization/deserialization frameworks)
     public Product() {
@@ -23,6 +24,14 @@ public class Product implements Serializable {
         this.category = category;
         this.description = description;
         this.imageUrl = imageUrl;  // Updated to 'imageUrl'
+    }
+
+    public String getOrderQuantity() {
+        return orderQuantity;
+    }
+
+    public void setOrderQuantity(String orderQuantity) {
+        this.orderQuantity = orderQuantity;
     }
 
     // Getters

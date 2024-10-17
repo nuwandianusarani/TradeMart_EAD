@@ -65,6 +65,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
             // Create a product object (assuming you have a Product model)
              Product product = new Product(productName, price, availableQuantity, categoryName,description,image);
+             product.setOrderQuantity(quantityEditText.getText().toString());
 
             // Add the product to the singleton CartManager
             CartManager.getInstance().addProduct(product);

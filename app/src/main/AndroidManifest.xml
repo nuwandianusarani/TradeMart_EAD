@@ -51,6 +51,13 @@
             android:exported="true"></activity>
         <activity android:name=".UserProfileActivity"
             android:exported="true"></activity>
+        <activity android:name=".VendorActivity"
+            android:exported="true"></activity>
+        <activity android:name=".VendorCommentActivity"
+            android:exported="true"></activity>
+        <activity android:name=".UserOrderActivity"
+            android:exported="true"></activity>
+
 
     </application>
 

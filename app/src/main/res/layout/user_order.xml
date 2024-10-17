@@ -6,24 +6,6 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email" />
-
-    <TextView
-        android:id="@+id/deliveryAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delivery Address" />
-
-    <TextView
-        android:id="@+id/orderTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Order Total" />
-
-    <TextView
         android:id="@+id/productName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,6 +16,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quantity" />
+
+    <TextView
+        android:id="@+id/orderTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order Total" />
 
     <TextView
         android:id="@+id/status"

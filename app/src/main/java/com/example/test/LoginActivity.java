@@ -71,7 +71,8 @@ public class LoginActivity extends AppCompatActivity {
             String result = "";
 
             try {
-                URL url = new URL("http://10.0.2.2:3000/api/Auth/login");
+//                URL url = new URL("http://10.0.2.2:3000/api/Auth/login");
+                URL url = new URL("http://192.168.138.71:3000/api/Auth/login");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json");

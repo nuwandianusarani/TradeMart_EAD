@@ -42,7 +42,8 @@ public class CategoryActivity extends AppCompatActivity implements CategoryAdapt
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://10.0.2.2:3000/api/Category/list");
+//                    URL url = new URL("http://10.0.2.2:3000/api/Category/list");
+                    URL url = new URL("http://192.168.138.71:3000/api/Category/list");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("GET");
 
@@ -109,7 +110,8 @@ public class CategoryActivity extends AppCompatActivity implements CategoryAdapt
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://10.0.2.2:3000/api/Product/listwithEmail?category=" + category);
+//                    URL url = new URL("http://10.0.2.2:3000/api/Product/listwithEmail?category=" + category);
+                    URL url = new URL("http://192.168.138.71:3000/api/Product/listwithEmail?category=" + category);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("GET");
 

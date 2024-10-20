@@ -78,7 +78,8 @@ public class ProductActivity extends AppCompatActivity implements ProductAdapter
                 String availableQuantity = productObject.getString("availableQuantity");
                 String category = productObject.getString("category");
                 String description = productObject.getString("description");
-                String image = "http://10.0.2.2:3000/images/" + productObject.getString("image");
+//                String image = "http://10.0.2.2:3000/images/" + productObject.getString("image");
+                String image = "http://192.168.138.71:3000/images/" + productObject.getString("image");
 
                 // Create a Category object and add it to the ArrayList
                 Product product = new Product(productName, price, availableQuantity, category, description, image);

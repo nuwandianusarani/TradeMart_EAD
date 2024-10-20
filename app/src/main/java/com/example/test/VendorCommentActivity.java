@@ -67,7 +67,8 @@ public class VendorCommentActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://10.0.2.2:3000/api/Vendor/comment/" + vendorId);
+//                    URL url = new URL("http://10.0.2.2:3000/api/Vendor/comment/" + vendorId);
+                    URL url = new URL("http://192.168.138.71:3000/api/Vendor/comment/" + vendorId);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("POST");
                     conn.setRequestProperty("Content-Type", "application/json");

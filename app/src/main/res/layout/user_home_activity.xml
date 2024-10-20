@@ -29,16 +29,6 @@
         android:textColor="@android:color/white" />
 
     <Button
-        android:id="@+id/btn_cart"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:backgroundTint="@color/Ash"
-        android:text="Cart"
-        android:textColor="@android:color/white"
-        android:textSize="22sp"
-        android:layout_marginBottom="16dp" />
-
-    <Button
         android:id="@+id/btn_orders"
         android:layout_width="match_parent"
         android:layout_height="80dp"

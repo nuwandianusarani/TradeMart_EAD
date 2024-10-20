@@ -41,7 +41,8 @@ public class UserOrderActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://10.0.2.2:3000/api/Order/user-orders");
+//                    URL url = new URL("http://10.0.2.2:3000/api/Order/user-orders");
+                    URL url = new URL("http://192.168.138.71:3000/api/Order/user-orders");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("GET");
 
